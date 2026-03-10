@@ -1,6 +1,7 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
 import { IsNumber, IsOptional, IsString } from 'class-validator';
+import { Prisma } from 'generated/prisma/client';
 
 export class QueryTestDto {
   @ApiPropertyOptional()
@@ -19,4 +20,9 @@ export class QueryTestDto {
   @IsOptional()
   @Transform(({ value }) => parseInt(value, 10))
   offset: number;
+
+  @IsOptional()
+  @ApiPropertyOptional()
+  @Transform((params) => JSON.parse(params.value))
+  orderby?: Prisma.TestOrderByWithRelationInput;
 }

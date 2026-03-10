@@ -34,14 +34,16 @@ export class TestService {
     return test;
   }
 
-  update(id: string, updateTestDto: UpdateTestDto) {
+  async update(id: string, updateTestDto: UpdateTestDto) {
+    await this.findOne(id);
     return this.prisma.test.update({
       where: { id, deletedAt: null },
       data: updateTestDto,
     });
   }
 
-  remove(id: string) {
+  async remove(id: string) {
+    await this.findOne(id);
     return this.prisma.test.update({
       where: { id },
       data: { deletedAt: new Date() },
