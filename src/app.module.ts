@@ -6,6 +6,9 @@ import configuration from './config/configuration';
 import { HealthModule } from './core/health/health.module';
 import { KycModule } from './modules/kyc/kyc.module';
 import { ProductsModule } from './modules/products/products.module';
+import { TestModule } from './modules/test/test.module';
+import { PrismaService } from './core/prisma/prisma.service';
+import { PrismaModule } from './core/prisma/prisma.module';
 
 @Module({
   imports: [
@@ -59,6 +62,9 @@ import { ProductsModule } from './modules/products/products.module';
     // Resources
     KycModule,
     ProductsModule,
+    TestModule,
+    PrismaModule,
   ],
+  providers: [PrismaService],
 })
 export class AppModule {}
