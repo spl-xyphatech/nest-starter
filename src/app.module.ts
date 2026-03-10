@@ -1,9 +1,14 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
 import { LoggerModule } from 'nestjs-pino';
 import configuration from './config/configuration';
-import { HealthModule } from './core/health/health.module';
 import { KycModule } from './modules/kyc/kyc.module';
+import { ProductsModule } from './modules/products/products.module';
+import { TestModule } from './modules/test/test.module';
+import { HealthModule } from './shared/health/health.module';
+import { PrismaModule } from './shared/prisma/prisma.module';
+import { PrismaService } from './shared/prisma/prisma.service';
 
 @Module({
   imports: [
@@ -16,7 +21,6 @@ import { KycModule } from './modules/kyc/kyc.module';
       // Disable env variables loading in production from `.env` file
       ignoreEnvFile: process.env.NODE_ENV === 'production' ? true : false,
     }),
-
     LoggerModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -45,11 +49,22 @@ import { KycModule } from './modules/kyc/kyc.module';
         },
       }),
     }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => ({
+        uri: configService.get<string>('mongodb.uri'),
+      }),
+    }),
 
     HealthModule,
 
     // Resources
     KycModule,
+    ProductsModule,
+    TestModule,
+    PrismaModule,
   ],
+  providers: [PrismaService],
 })
 export class AppModule {}
