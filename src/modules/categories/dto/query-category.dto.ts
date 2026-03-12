@@ -4,7 +4,7 @@ import { IsNumber, IsOptional, IsString } from 'class-validator';
 import { Prisma } from 'generated/prisma/client';
 import { getOrderBy } from 'src/common/utils/sort-order';
 
-export class QueryTestDto {
+export class QueryCategoryDto {
   @ApiPropertyOptional()
   @IsString()
   @IsOptional()
@@ -30,5 +30,5 @@ export class QueryTestDto {
   @IsOptional()
   @ApiPropertyOptional()
   @Transform(({ value }) => getOrderBy(value))
-  orderby?: Prisma.TestOrderByWithRelationInput;
+  orderby?: Prisma.CategoryOrderByWithRelationInput;
 }

@@ -6,6 +6,9 @@ import { TestModule } from './modules/test/test.module';
 import { HealthModule } from './shared/health/health.module';
 import { PrismaModule } from './shared/prisma/prisma.module';
 import { PrismaService } from './shared/prisma/prisma.service';
+import { TagsModule } from './modules/tags/tags.module';
+import { CategoriesModule } from './modules/categories/categories.module';
+import { MerchantsModule } from './modules/merchants/merchants.module';
 
 @Module({
   imports: [
@@ -61,6 +64,9 @@ import { PrismaService } from './shared/prisma/prisma.service';
     // ProductsModule,
     TestModule,
     PrismaModule,
+    TagsModule,
+    CategoriesModule,
+    MerchantsModule,
   ],
   providers: [PrismaService],
 })

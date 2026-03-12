@@ -21,6 +21,7 @@ export class TestService {
       where,
       take: query?.limit,
       skip: query?.offset,
+      orderBy: query?.orderby,
     });
 
     return { data, total };
@@ -34,11 +35,11 @@ export class TestService {
     return test;
   }
 
-  async update(id: number, updateTestDto: UpdateTestDto) {
+  async update(id: number, data: UpdateTestDto) {
     await this.findOne(id);
     return this.prisma.test.update({
       where: { id, deletedAt: null },
-      data: updateTestDto,
+      data,
     });
   }
 
