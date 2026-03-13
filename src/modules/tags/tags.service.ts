@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Tag } from 'generated/prisma/client';
 import { PrismaService } from 'src/shared/prisma/prisma.service';
 import { CreateTagDto } from './dto/create-tag.dto';
@@ -10,14 +10,6 @@ export class TagsService {
   constructor(private prisma: PrismaService) {}
 
   async create(data: CreateTagDto): Promise<Tag> {
-    if (data?.code) {
-      const existingTag = await this.prisma.tag.findUnique({
-        where: { code: data?.code },
-      });
-      if (existingTag) {
-        throw new BadRequestException('Tag with this code already exists');
-      }
-    }
     return this.prisma.tag.create({ data });
   }
 
@@ -35,16 +27,13 @@ export class TagsService {
     return { data, total };
   }
 
-  async findOne(id: number): Promise<Tag> {
-    const tag = await this.prisma.tag.findUnique({
+  findOne(id: number): Promise<Tag> {
+    return this.prisma.tag.findUniqueOrThrow({
       where: { id, deletedAt: null },
     });
-    if (!tag) throw new BadRequestException('Tag not found');
-    return tag;
   }
 
   async update(id: number, data: UpdateTagDto) {
-    await this.findOne(id);
     return this.prisma.tag.update({
       where: { id, deletedAt: null },
       data,
@@ -52,7 +41,6 @@ export class TagsService {
   }
 
   async remove(id: number): Promise<Tag> {
-    await this.findOne(id);
     return this.prisma.tag.update({
       where: { id },
       data: { deletedAt: new Date() },

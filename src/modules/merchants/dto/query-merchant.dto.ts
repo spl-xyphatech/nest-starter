@@ -27,8 +27,10 @@ export class QueryMerchantDto {
   @Transform(({ value }) => parseInt(value, 10))
   offset: number;
 
+  @ApiPropertyOptional({
+    type: 'string',
+  })
   @IsOptional()
-  @ApiPropertyOptional()
   @Transform(({ value }) => getOrderBy(value))
   orderby?: Prisma.MerchantOrderByWithRelationInput;
 }
