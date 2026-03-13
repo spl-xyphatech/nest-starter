@@ -1,11 +1,8 @@
 # cupons-api
 
-Core API engine for Cupons apps.
+Core API for Cupons apps.
 
-## Use cases
-
-[![Use cases
-diagram](./docs/images/use-cases.png)](./docs/images/use-cases.png)
+See the [Docs](./docs/docs.md) to understand project requirements.
 
 ## Schema
 
@@ -25,21 +22,21 @@ See the [DB Diagram](./docs/dbdiagram.md) to make changes at
 See the [Development Principles](/docs/development-principles.md) doc
 for more information.
 
-| Module                                   | Description                                              |
-| ---------------------------------------- | -------------------------------------------------------- |
-| [common](./src/common)                   | Shared DTOs, filters, validators, and utilities.         |
-| [config](./src/config)                   | Application configuration and env loading.               |
-| [shared/health](./src/shared/health)     | Health checks and readiness endpoints.                   |
-| [shared/prisma](./src/shared/prisma)     | Prisma service, helpers, and database access layer.      |
-| [modules/auth](./src/modules/auth)       | Authentication flows, guards, and strategies.            |
-| [modules/users](./src/modules/users)     | User management.                                         |
-| [modules/roles](./src/modules/roles)     | Role definitions and assignments.                        |
-| [modules/permissions](./src/modules/permissions) | RBAC permissions (module + action).               |
-| [modules/tags](./src/modules/tags)       | Tag management.                                          |
-| [modules/categories](./src/modules/categories) | Category management.                               |
-| [modules/merchants](./src/modules/merchants) | Merchant registration, status, and profile data.    |
-| [modules/events](./src/modules/events)   | Event management and event requests.                     |
-| [modules/coupons](./src/modules/coupons) | Coupon issuance, status updates, and redemption.         |
+| Module                                           | Description                                         |
+| ------------------------------------------------ | --------------------------------------------------- |
+| [common](./src/common)                           | Shared DTOs, filters, validators, and utilities.    |
+| [config](./src/config)                           | Application configuration and env loading.          |
+| [shared/health](./src/shared/health)             | Health checks and readiness endpoints.              |
+| [shared/prisma](./src/shared/prisma)             | Prisma service, helpers, and database access layer. |
+| [modules/auth](./src/modules/auth)               | Authentication flows, guards, and strategies.       |
+| [modules/users](./src/modules/users)             | User management.                                    |
+| [modules/roles](./src/modules/roles)             | Role definitions and assignments.                   |
+| [modules/permissions](./src/modules/permissions) | RBAC permissions (module + action).                 |
+| [modules/tags](./src/modules/tags)               | Tag management.                                     |
+| [modules/categories](./src/modules/categories)   | Category management.                                |
+| [modules/merchants](./src/modules/merchants)     | Merchant registration, status, and profile data.    |
+| [modules/events](./src/modules/events)           | Event management and event requests.                |
+| [modules/coupons](./src/modules/coupons)         | Coupon issuance, status updates, and redemption.    |
 
 ## Quickstart (Docker)
 
