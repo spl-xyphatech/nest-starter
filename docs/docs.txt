@@ -127,6 +127,7 @@ Admin (Web):
   - Event List + Create/Edit
   - Event Request List + Detail
   - Category List + Create/Edit
+  - Tag List + Create/Edit
 
 Customer (Mobile):
   - Login / Register
