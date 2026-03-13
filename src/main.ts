@@ -121,8 +121,8 @@ async function bootstrap() {
 
   // Initialize Swagger using `SwaggerModule` class
   const swaggerConfig = new DocumentBuilder()
-    .setTitle('Nest API')
-    .setDescription('Core API engine for Nest apps')
+    .setTitle('Coupon API')
+    .setDescription('Core API engine for Coupon app')
     .setVersion('0.0.1')
     // .addApiKey(
     //   {
@@ -152,7 +152,6 @@ async function bootstrap() {
   const { httpAdapter } = app.get(HttpAdapterHost);
   app.useGlobalFilters(new PrismaClientExceptionFilter(httpAdapter));
 
-  console.log('port :>> ', port);
   await app.listen(port);
 
   console.log(`🚀 Application is running on: http://localhost:${port}`);

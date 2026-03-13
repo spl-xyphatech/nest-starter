@@ -3,7 +3,7 @@ export function getOrderBy(value: string) {
   if (!value) return undefined;
 
   // Split by `+` to extract field and direction
-  const [field, direction = 'asc'] = value.split(' ');
+  const [field, direction = 'asc'] = value.split('__');
   console.log('direction :>> ', direction);
   if (!field || !['asc', 'desc'].includes(direction.toLowerCase())) {
     throw new Error('Invalid orderby format. Use "field asc" or "field desc".');

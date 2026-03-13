@@ -81,7 +81,7 @@ export class UsersService {
     const total = await this.prisma.user.count({ where });
     const users = await this.prisma.user.findMany({
       where,
-      skip: params?.skip,
+      skip: params?.offset,
       take: params?.limit,
       orderBy: params.orderby || {
         updatedAt: 'desc',

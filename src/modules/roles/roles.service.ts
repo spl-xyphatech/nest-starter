@@ -29,7 +29,7 @@ export class RolesService {
     const total = await this.prisma.role.count({ where });
     const roles = await this.prisma.role.findMany({
       where,
-      skip: params?.skip,
+      skip: params?.offset,
       take: params?.limit,
       orderBy: params?.orderby || {
         updatedAt: 'desc',

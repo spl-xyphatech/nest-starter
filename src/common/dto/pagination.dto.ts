@@ -23,5 +23,5 @@ export class PaginationDto {
   @IsNumber()
   @Transform((params) => Number(params.value))
   @ApiProperty({ type: Number, required: false })
-  skip?: number = 0;
+  offset?: number = 0;
 }
