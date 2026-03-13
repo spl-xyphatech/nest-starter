@@ -12,6 +12,8 @@ import { UsersModule } from './modules/users/users.module';
 import { HealthModule } from './shared/health/health.module';
 import { PrismaModule } from './shared/prisma/prisma.module';
 import { PrismaService } from './shared/prisma/prisma.service';
+import { CouponsModule } from './modules/coupons/coupons.module';
+import { EventsModule } from './modules/events/events.module';
 
 @Module({
   imports: [
@@ -63,6 +65,8 @@ import { PrismaService } from './shared/prisma/prisma.service';
     TagsModule,
     CategoriesModule,
     MerchantsModule,
+    CouponsModule,
+    EventsModule,
   ],
   providers: [PrismaService],
 })

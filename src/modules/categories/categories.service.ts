@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Category } from 'generated/prisma/client';
 import { PrismaService } from 'src/shared/prisma/prisma.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
@@ -28,15 +28,12 @@ export class CategoriesService {
   }
 
   async findOne(id: string): Promise<Category> {
-    const category = await this.prisma.category.findUnique({
+    return this.prisma.category.findUniqueOrThrow({
       where: { id, deletedAt: null },
     });
-    if (!category) throw new BadRequestException('Category not found');
-    return category;
   }
 
   async update(id: string, data: UpdateCategoryDto) {
-    await this.findOne(id);
     return this.prisma.category.update({
       where: { id, deletedAt: null },
       data,
@@ -44,7 +41,6 @@ export class CategoriesService {
   }
 
   async remove(id: string): Promise<Category> {
-    await this.findOne(id);
     return this.prisma.category.update({
       where: { id },
       data: { deletedAt: new Date() },
