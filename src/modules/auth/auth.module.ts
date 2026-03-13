@@ -1,17 +1,16 @@
-import { PrismaModule } from '@app/common/prisma/prisma.module';
-import { HttpModule } from '@nestjs/axios';
 import { Logger, Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
-import { RolesModule } from 'src/roles/roles.module';
+import { PrismaModule } from 'src/shared/prisma/prisma.module';
+import { RolesModule } from '../roles/roles.module';
+import { UsersModule } from '../users/users.module';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { UsersModule } from 'src/users/users.module';
 
 @Module({
   controllers: [AuthController],
   providers: [Logger, AuthService],
   imports: [
-    HttpModule,
+    // HttpModule,
     JwtModule.register({
       global: true,
     }),

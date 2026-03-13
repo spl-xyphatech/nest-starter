@@ -1,10 +1,10 @@
-import { Body, Controller, Get, Post, HttpCode } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, Post } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { RolesService } from 'src/roles/roles.service';
-import { Public } from './guards/authn.guard';
+import { RolesService } from '../roles/roles.service';
 import { AuthService } from './auth.service';
-import { SignInDto } from './dto/signin.dto';
 import { CurrentUser } from './decorators/current-user.decorator';
+import { SignInDto } from './dto/signin.dto';
+import { Public } from './guards/authn.guard';
 
 @ApiTags('Auth')
 @ApiBearerAuth()

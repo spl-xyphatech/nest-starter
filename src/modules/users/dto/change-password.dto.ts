@@ -1,6 +1,6 @@
-import { IsPassword } from '@app/common/validators/is-password.validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString } from 'class-validator';
+import { IsPassword } from 'src/common/validators/is-password.validator';
 
 export class ChangePasswordDto {
   @IsString()

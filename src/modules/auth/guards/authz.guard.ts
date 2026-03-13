@@ -6,8 +6,8 @@ import {
   SetMetadata,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
+import { PrismaService } from 'src/shared/prisma/prisma.service';
 import { Permission } from '../enums/permission.enum';
-import { PrismaService } from '@app/common/prisma/prisma.service';
 
 export const PERMISSION_KEY = 'permissions';
 export const Can = (data: string) => SetMetadata(PERMISSION_KEY, data);
