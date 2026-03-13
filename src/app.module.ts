@@ -2,9 +2,13 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { LoggerModule } from 'nestjs-pino';
 import configuration from './config/configuration';
+import { AuthModule } from './modules/auth/auth.module';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { MerchantsModule } from './modules/merchants/merchants.module';
+import { PermissionsModule } from './modules/permissions/permissions.module';
+import { RolesModule } from './modules/roles/roles.module';
 import { TagsModule } from './modules/tags/tags.module';
+import { UsersModule } from './modules/users/users.module';
 import { HealthModule } from './shared/health/health.module';
 import { PrismaModule } from './shared/prisma/prisma.module';
 import { PrismaService } from './shared/prisma/prisma.service';
@@ -12,7 +16,7 @@ import { PrismaService } from './shared/prisma/prisma.service';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      // isGlobal: true,
+      isGlobal: true,
       // Cache environment variables
       cache: true,
       // Load custom configuration file
@@ -52,6 +56,10 @@ import { PrismaService } from './shared/prisma/prisma.service';
     HealthModule,
 
     // Resources
+    AuthModule,
+    UsersModule,
+    RolesModule,
+    PermissionsModule,
     TagsModule,
     CategoriesModule,
     MerchantsModule,
